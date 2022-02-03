@@ -16,27 +16,33 @@ gameBoard.style.width = `${width}px`;
 gameBoard.style.backgroundColor = 'grey'
 gameBoard.classList.add("game-board")
 gameArea.appendChild(gameBoard);
-const button = document.createElement('button');
+/* const button = document.createElement('button');
 button.innerHTML = "Grid Size"
 gameArea.appendChild(button)
-
+ */
 
 
 slider.oninput = function () {
     output.innerHTML = this.value;
-    //const num = slider.value;
+    const num = slider.value;
+    generateRows(num);
 
 }
 
-button.addEventListener('click', generateRows)
+//button.addEventListener('click', generateRows)
 
-function generateRows (){
-    let input = prompt("Grid size: ")
-    num = Number(input);
-    while(gameBoard.firstChild){
+function generateRows (num){
+    //let input = prompt("Grid size: ")
+    num = Number(num);
+    const gridSize = document.createElement('div');
+    if (gameBoard.firstChild){
+         while(gameBoard.firstChild){
         gameBoard.removeChild(gameBoard.firstChild)
+       
 
     }
+    }; 
+   
 
     for (i = 1; i <= num; i++){
         let gameRow = document.createElement('div')
@@ -49,34 +55,16 @@ function generateRows (){
        gamePiece.style.backgroundColor = "blue";
         gamePiece.style.height = `${height/num}px`;
         gamePiece.style.width = `${width/num}px`;
-        gamePiece.addEventListener('mouseover', (e)=>{
+        gamePiece.addEventListener('mouseover', ()=>{
             gamePiece.style.backgroundColor ='white'
         })
        gameRow.appendChild(gamePiece);
         }
-        
     }
-    const gridSize = document.createElement('div');
-    gameArea.appendChild(gridSize)
-    gridSize.innerHTML = input;
     
-}
-
-
-function deleteRows () {
-    let removeRow = document.querySelector('.game-board')
    
+    num = 0; 
     
-    /* for (i = 0; i<=num; i++){
-       let removePiece = removeRow)
-       console.log(removePiece);
-    } */
-
-    /* removeRow.removeChild(removeRow.lastChild) */
-    console.log(removeRow.lastElementChild)
-    removeRow.lastChild.remove();
-
-    //generateRows
-
-
 }
+
+
